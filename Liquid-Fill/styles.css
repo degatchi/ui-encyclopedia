@@ -1,0 +1,59 @@
+:root {
+    --background: #f8f8f8;
+    --dark: #303032;
+  }
+  
+  * {
+    box-sizing: border-bot;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--background);
+  }
+  
+  .box {
+    position: relative;
+    background: var(--dark);
+    border: 0.25rem solid var(--dark);
+    height: 8rem;
+    width: 8rem;
+    outline: 0;
+    overflow: hidden;
+  }
+  
+  .box::before {
+    content: url(/images/st-white.svg);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .box::after {
+    content: "";
+    position: absolute;
+    bottom: -50%;
+    left: -50%;
+    height: 200%;
+    width: 200%;
+    background: var(--background);
+    border-radius: 45%;
+    animation: spin 6s ease-in-out forwards;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: translateY(0) rotate(0deg);
+    }
+    100% {
+      transform: translateY(-100%) rotate(500deg);
+    }
+  }
+  
