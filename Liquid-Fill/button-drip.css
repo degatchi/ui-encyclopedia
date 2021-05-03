@@ -1,0 +1,63 @@
+:root {
+    --background: #f8f8f8;
+    --dark: #303032;
+  }
+  
+  * {
+    box-sizing: border-bot;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--background);
+  }
+  
+  .box {
+    position: relative;
+    background: var(--dark); /* Background insde box */
+    border: 0.25rem solid var(--dark);
+    height: 4rem;
+    width: 10rem;
+    outline: 0;
+    overflow: hidden;
+  }
+
+  .box:hover {
+    cursor: pointer;
+  }
+  
+  .box::before {
+    content: url(/images/st-white.svg); /* can have images: `url(/images/st-white.svg)` */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .box::after {
+    content: "";
+    position: absolute;
+    bottom: -50%;
+    left: -50%;
+    height: 500%;
+    width: 200%;
+    background: violet; /* Color of moving object */
+    border-radius: 35%;
+    animation: spin 6s ease-out infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: translateY(-33%) rotate(90deg);
+    }
+    100% {
+      transform: translateY(5%) rotate(390deg);
+    }
+  }
+  
