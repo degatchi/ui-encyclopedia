@@ -21,7 +21,8 @@
     position: relative;
     background: var(--dark); /* Background insde box */
     border: 0.25rem solid var(--dark);
-    height: 4rem;
+    border-radius: 1rem;  /* Gives border a curve */
+    height: 3rem;
     width: 10rem;
     outline: 0;
     overflow: hidden;
@@ -32,7 +33,10 @@
   }
   
   .box::before {
-    content: url(/images/st-white.svg); /* can have images: `url(/images/st-white.svg)` */
+    content: 'FUNCTION'; /* can have images: `url(/images/st-white.svg)` */
+    font-size: 1.2rem;
+    font-family: sans-serif;
+    color: white;
     height: 100%;
     width: 100%;
     display: flex;
@@ -44,20 +48,20 @@
     content: "";
     position: absolute;
     bottom: -50%;
-    left: -50%;
-    height: 500%;
-    width: 200%;
+    left: -25%;
+    height: 550%;
+    width: 150%;
     background: violet; /* Color of moving object */
-    border-radius: 35%;
+    border-radius: 40%;
     animation: spin 6s ease-out infinite;
   }
   
   @keyframes spin {
     0% {
-      transform: translateY(-33%) rotate(90deg);
+      transform: translateY(-35%) rotate(-35deg);
     }
     100% {
-      transform: translateY(5%) rotate(390deg);
+      transform: translateY(10%) rotate(390deg);
     }
   }
   
