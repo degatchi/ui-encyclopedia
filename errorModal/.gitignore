@@ -1,0 +1,11 @@
+# Excess
+/node_modules/
+/build/
+node_modules
+.DS_Store
+.env
+yarn-error.log
+
+#Hardhat files
+cache
+artifacts
