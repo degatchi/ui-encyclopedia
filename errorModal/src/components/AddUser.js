@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Card from './Card';
 import Button from './Button';
 import ErrorModal from './ErrorModal';
+import Wrapper from './Wrapper'
 
 const FormControl = styled.div`
   margin: 2rem auto;
@@ -71,7 +72,7 @@ const AddUser = (props) => {
   };
 
   return (
-    <div>
+    <Wrapper>
       {error && (
         <ErrorModal
           title={error.title}
@@ -98,7 +99,7 @@ const AddUser = (props) => {
           <Button type='submit'>Add User</Button>
         </FormControl>
       </Card>
-    </div>
+    </Wrapper>
   );
 };
 

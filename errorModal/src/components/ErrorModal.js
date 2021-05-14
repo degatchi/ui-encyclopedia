@@ -50,7 +50,7 @@ const Footer = styled.footer`
 
 const ErrorModal = (props) => {
   return (
-    <div>
+    <React.Fragment>
       <Backdrop onClick={props.onConfirm}>
         <Card>
           <Modal>
@@ -66,7 +66,7 @@ const ErrorModal = (props) => {
           </Modal>
         </Card>
       </Backdrop>
-    </div>
+    </React.Fragment>
   );
 };
 
