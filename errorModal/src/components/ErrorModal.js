@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import ReactDom from 'react-dom';
 
 import Card from './Card';
 import Button from './Button';
@@ -48,24 +49,45 @@ const Footer = styled.footer`
   justify-content: flex-end;
 `;
 
+const Backdrop = (props) => {
+  return <Backdrop onClick={props.onConfirm} />;
+};
+
+const ModalOverlay = (props) => {
+  return (
+    <Card>
+      <Modal>
+        <Header>
+          <h2>{props.title}</h2>
+        </Header>
+        <div>
+          <Paragraph>{props.message}</Paragraph>
+        </div>
+        <Footer>
+          <Button onClick={props.onConfirm}>Okay</Button>
+        </Footer>
+      </Modal>
+    </Card>
+  );
+};
+
 const ErrorModal = (props) => {
   return (
+    // PORTAL: HTML code is rendered in a different place
+    // passes JSX; `document.getElementById('backdrop-root')` is the API
     <React.Fragment>
-      <Backdrop onClick={props.onConfirm}>
-        <Card>
-          <Modal>
-            <Header>
-              <h2>{props.title}</h2>
-            </Header>
-            <div>
-              <Paragraph>{props.message}</Paragraph>
-            </div>
-            <Footer>
-              <Button onClick={props.onConfirm}>Okay</Button>
-            </Footer>
-          </Modal>
-        </Card>
-      </Backdrop>
+      {ReactDom.createPortal(
+        <Backdrop onConfirm={props.onConfirm} />,
+        document.getElementById('backdrop-root')
+      )}
+      {ReactDom.createPortal(
+        <ModalOverlay
+          title={props.title}
+          message={props.message}
+          onConfirm={props.onConfirm}
+        />,
+        document.getElementById('overlay-root')
+      )}
     </React.Fragment>
   );
 };
