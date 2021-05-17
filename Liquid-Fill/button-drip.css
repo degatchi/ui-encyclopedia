@@ -25,7 +25,7 @@
     height: 3rem;
     width: 10rem;
     outline: 0;
-    overflow: hidden;
+    overflow: hidden; /* remove to see orb */
   }
 
   .box:hover {
