@@ -1,5 +1,5 @@
 :root {
-    --background: #f8f8f8;
+    --background: hsl(0, 0%, 97%);
     --dark: #303032;
   }
   
@@ -33,10 +33,11 @@
   }
   
   .box::before {
+    /* Content under the drip */
     content: 'FUNCTION'; /* can have images: `url(/images/st-white.svg)` */
     font-size: 1.2rem;
     font-family: sans-serif;
-    color: white;
+    color: white; /* Color of text */
     height: 100%;
     width: 100%;
     display: flex;
@@ -45,6 +46,7 @@
   }
   
   .box::after {
+     /* The drip overlay */
     content: "";
     position: absolute;
     bottom: -50%;
@@ -53,15 +55,26 @@
     width: 150%;
     background: violet; /* Color of moving object */
     border-radius: 40%;
-    animation: spin 6s ease-out infinite;
+    animation: spinDownOff 6s ease-out infinite; /* forwards(1) & infinite */
   }
   
-  @keyframes spin {
+  @keyframes spinDownOn {
+     /* Drip animation illusion */
     0% {
-      transform: translateY(-35%) rotate(-35deg);
+      transform: translateX(2%) translateY(-35%) rotate(-35deg);
     }
     100% {
-      transform: translateY(10%) rotate(390deg);
+      transform: translateX(0%) translateY(30%) rotate(390deg);
     }
   }
+
+  @keyframes spinDownOff {
+    /* Drip animation illusion */
+   0% {
+     transform: translateX(0%) translateY(53%) rotate(390deg);
+   }
+   100% {
+     transform: translateX(0%) translateY(135%) rotate(780deg);
+   }
+ }
   
