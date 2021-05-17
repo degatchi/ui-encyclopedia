@@ -14,3 +14,7 @@ Drip Button:
 - Fix passing through button title
 - Seperate activation of resued buttons
 
+Connected Wallet:
+- Add custom token when connected & add token symbol like SUSHISWAP when not connected
+
+![image](https://user-images.githubusercontent.com/72078332/118517203-5d0da300-b77a-11eb-858f-cd4518648397.png)
