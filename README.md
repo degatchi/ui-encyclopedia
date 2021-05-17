@@ -1,5 +1,7 @@
 # ui-encyclopedia
-All the UI designs I learn will be stored here for future reference :)
+All the UI designs & concepts I learn will be stored here for future reference :)
+
+My main focus is towards `lucus'-custom-components` where I will be making components from scratch with inspired ideas. If you have any suggestions or questions feel free to contact me on twitter @DeGatchi.
 
 
 ## React
