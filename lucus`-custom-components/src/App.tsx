@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import IcingButton from './components/IcingButton/IcingButtonStyles';
+import IcingButton from './components/IcingButton/IcingButton';
+import Modal from './components/Modals/Modal';
+
 
 // Centering to middle of screen
 const CenterComponents = styled.div`
@@ -14,29 +16,25 @@ const CenterComponents = styled.div`
 
 function App() {
   const [pendingTx, setPendingTx] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const setTxStatusHandler = () => {
-    if (pendingTx) {
-      setPendingTx(false);
-    } else {
-      setPendingTx(true);
-    }
+    setPendingTx((prev: boolean) => !prev)
+  };
+
+  const setShowModalHandler = () => {
+    setShowModal((prev: boolean) => !prev)
   };
 
   return (
     <CenterComponents>
-      <button onClick={async () => setTxStatusHandler}>COMPLETE TX</button>
-
+      <button onClick={setTxStatusHandler}>COMPLETE TX</button>
+      <button onClick={setShowModalHandler}>SHOW MODAL</button>
+      <Modal title={'MODAL'} showModal={showModal} onDismiss={setShowModalHandler}/>
       <IcingButton
         btnName='DEPOSIT'
         isDisabled={pendingTx}
-        onClick={pendingTx ? undefined : async () => setTxStatusHandler}
-      />
-
-      <IcingButton
-        btnName='DEPOSIT'
-        isDisabled={pendingTx}
-        onClick={pendingTx ? undefined : async () => setTxStatusHandler}
+        onClick={pendingTx ? undefined : setTxStatusHandler}
       />
     </CenterComponents>
   );

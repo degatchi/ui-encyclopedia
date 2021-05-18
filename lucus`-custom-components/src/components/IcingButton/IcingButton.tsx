@@ -20,14 +20,13 @@ const spinDownOff = keyframes`{
   }
 }`;
 
-
 // Default button styling
 const Base = styled.button<ButtonType>`
-  margin: 10px; 
+  margin: 10px;
   position: relative;
   background: #303032; /* Background insde box - change if white or dark theme */
   border: 0.22rem solid #303032;
-  border-radius: .75rem; /* Gives border a curve */
+  border-radius: 0.75rem; /* Gives border a curve */
   height: 3rem;
   width: 10rem;
   outline: 0;
@@ -40,7 +39,7 @@ const Base = styled.button<ButtonType>`
 
   &::before {
     /* Content under the drip */
-    content: ${(props) => (props.btnName ? props.btnName : 'default')};
+    content: ${(props) => props.btnName};
     font-size: 1.2rem;
     font-family: sans-serif;
     color: white; /* Color of text - change if white or dark theme */
@@ -85,26 +84,11 @@ const IcingOff = styled(Base)`
   }`;
 
 interface ButtonType {
+  size: string;
   btnName: string;
   isDisabled: boolean;
   onClick?: () => void;
 }
-
-// const BaseButton: React.FC<ButtonType> = ({
-//   btnName,
-//   isDisabled,
-//   onClick,
-// }) => {
-//   return (
-//     <>
-//       <Base
-//         btnName={btnName}
-//         isDisabled={isDisabled}
-//         onClick={onClick}
-//       />
-//     </>
-//   );
-// };
 
 const IcingOnButton: React.FC<ButtonType> = ({
   btnName,
@@ -113,11 +97,7 @@ const IcingOnButton: React.FC<ButtonType> = ({
 }) => {
   return (
     <>
-      <IcingOn
-        btnName={btnName}
-        isDisabled={isDisabled}
-        onClick={onClick}
-      />
+      <IcingOn btnName={btnName} isDisabled={isDisabled} onClick={onClick} />
     </>
   );
 };
@@ -129,11 +109,7 @@ const IcingOffButton: React.FC<ButtonType> = ({
 }) => {
   return (
     <>
-      <IcingOff
-        btnName={btnName}
-        isDisabled={isDisabled}
-        onClick={onClick}
-      />
+      <IcingOff btnName={btnName} isDisabled={isDisabled} onClick={onClick} />
     </>
   );
 };
@@ -145,7 +121,7 @@ const IcingButton: React.FC<ButtonType> = ({
 }) => {
   return (
     <>
-      {!isDisabled && !onClick ? (
+      {!isDisabled ? (
         <IcingOffButton
           btnName={btnName}
           isDisabled={isDisabled}
