@@ -39,7 +39,7 @@ const Base = styled.button<ButtonType>`
 
   &::before {
     /* Content under the drip */
-    content: "${(props) => props.btnName}";
+    content: '${(props) => props.btnName}';
     font-size: 1.2rem;
     font-family: sans-serif;
     color: white; /* Color of text - change if white or dark theme */
@@ -84,10 +84,8 @@ const IcingOff = styled(Base)`
   }`;
 
 interface ButtonType {
-  style?: string;
-  size?: string;
   btnName: string;
-  isDisabled: boolean;
+  isDisabled?: boolean;
   onClick?: () => void;
 }
 
@@ -119,7 +117,7 @@ const IcingOffButton: React.FC<ButtonType> = ({
   );
 };
 
-const IcingButton: React.FC<ButtonType> = ({
+export const IcingButton: React.FC<ButtonType> = ({
   btnName,
   isDisabled,
   onClick,
@@ -142,5 +140,3 @@ const IcingButton: React.FC<ButtonType> = ({
     </>
   );
 };
-
-export default IcingButton;

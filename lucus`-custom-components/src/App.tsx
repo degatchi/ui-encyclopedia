@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { Route } from 'react-router-dom';
 
-import IcingButton from './components/IcingButton/IcingButton';
+import Home from './pages/home';
+import Farms from './pages/farms';
+
+import { IcingButton } from './components/Buttons/IcingButton';
 import Modal from './components/Modals/Modal';
-
+import { Card } from './components/Card/index';
 
 // Centering to middle of screen
 const CenterComponents = styled.div`
@@ -19,24 +23,35 @@ function App() {
   const [showModal, setShowModal] = useState(false);
 
   const setTxStatusHandler = () => {
-    setPendingTx((prev: boolean) => !prev)
+    setPendingTx((prev: boolean) => !prev);
   };
 
   const setShowModalHandler = () => {
-    setShowModal((prev: boolean) => !prev)
+    setShowModal((prev: boolean) => !prev);
   };
 
   return (
-    <CenterComponents>
+    <>
       <button onClick={setTxStatusHandler}>COMPLETE TX</button>
       <button onClick={setShowModalHandler}>SHOW MODAL</button>
-      <Modal title={'MODAL'} showModal={showModal} onDismiss={setShowModalHandler}/>
+      <Modal
+        title={'MODAL'}
+        showModal={showModal}
+        onDismiss={setShowModalHandler}
+      />
       <IcingButton
         btnName='DEPOSIT'
         isDisabled={pendingTx}
         onClick={pendingTx ? undefined : setTxStatusHandler}
       />
-    </CenterComponents>
+      <Card width='18rem' height='14rem' />
+      <Route path='/home'>
+        <Home />
+      </Route>
+      <Route path='/farms'>
+        <Farms />
+      </Route>
+    </>
   );
 }
 
