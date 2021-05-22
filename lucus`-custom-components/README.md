@@ -7,12 +7,9 @@ Everything inside of this folder is what I have created from scratch! I hope you
 
 ## Theory
 - Drip Button: When the user clicks on the default button (that has no keyframe animations) it will switch the button to the styled button with the `spinDownOn` animation selected. After the tx is complete, the button will be switched to the `spinDownOff` animation (the user will be able to click the button mid animation so there are no unnecessary delays - the tx is complete, so why not allow them?), then back to the original.
+- Info Cards: Hovering over the card makes a drip come down while the card pops out a bit; cursor off the card begins the return of the drip
 
 ## Todo
-Drip Button:
-- Add loading indicator on top of icing
-- Fix passing through button title
-- Seperate activation of resued buttons
 
 Connected Wallet:
 - Add custom token when connected & add token symbol like SUSHISWAP when not connected
