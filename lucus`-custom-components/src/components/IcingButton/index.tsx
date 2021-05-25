@@ -174,7 +174,7 @@ const IcingButton: React.FC<ButtonType> = ({
 
   // Calls onClick manually & sets :after animations.
   const setInitialInteractionHandler = () => {
-    onClick();
+    onClick(); // If error, make a function that uses this & it will go away
     setInitialInteraction(true);
   };
 
