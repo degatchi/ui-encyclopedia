@@ -1,4 +1,4 @@
-import { scales } from "./types";
+import { scales, themes } from "./types";
 
 export const scaleVariants = {
     [scales.MD]: {
@@ -15,3 +15,21 @@ export const scaleVariants = {
       padding: "0 8px",
     },
   };
+
+// Button specs for toggled theme.
+export const themeColors = {
+    // LIGHT THEME ON
+    [themes.DARK]: {
+        background: 'hsl(305, 2%, 19%)',
+        color: 'white',
+        icingOnColor: 'linear-gradient(to right, hsl(321, 98%, 60%), hsl(321, 98%, 75%))',
+        icingOffColor: 'linear-gradient(to right, hsl(321, 98%, 60%), hsl(321, 98%, 75%))'
+    },
+    // DARK THEME ON
+    [themes.LIGHT]: {
+        background: 'linear-gradient(to right, hsl(291, 98%, 90%), hsl(291, 98%, 100%))',
+        color: 'hsl(305, 2%, 19%)',
+        icingOnColor: 'linear-gradient(to right, hsl(321, 98%, 60%), hsl(321, 98%, 75%))',
+        icingOffColor: 'linear-gradient(to right, hsl(321, 98%, 60%), hsl(321, 98%, 75%))'
+    }
+};
