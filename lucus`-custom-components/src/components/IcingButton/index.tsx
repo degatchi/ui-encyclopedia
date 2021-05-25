@@ -1,6 +1,6 @@
-import React from 'react'
-import styled, { keyframes } from 'styled-components'
-import { scaleVariants } from './theme'
+import React, { useState } from 'react';
+import styled, { keyframes } from 'styled-components';
+import { scaleVariants } from './theme';
 
 // Animation for icing onto button
 const spinDownOn = keyframes`{
@@ -10,7 +10,7 @@ const spinDownOn = keyframes`{
   100% {
     transform: translateX(0%) translateY(30%) rotate(390deg);
   }
-}`
+}`;
 
 // Animation for icing off of button
 const spinDownOff = keyframes`{
@@ -20,7 +20,7 @@ const spinDownOff = keyframes`{
   100% {
     transform: translateX(0%) translateY(135%) rotate(780deg);
   }
-}`
+}`;
 
 // Default button styling
 const Base = styled.button<ButtonType>`
@@ -33,11 +33,12 @@ const Base = styled.button<ButtonType>`
   width: 10rem;
   outline: 0;
   overflow: hidden;
-  opacity: ${(props) => (props.isDisabled ? '100%' : '80%')};
-  cursor: ${(props) => (props.isDisabled || props.isLoading ? 'auto' : 'pointer')};
+  opacity: ${(props) => (props.isDisabled ? '80%' : '100%')};
+  cursor: ${(props) =>
+    props.isDisabled || props.isLoading ? 'auto' : 'pointer'};
 
   &:hover {
-    opacity: 92%;
+    opacity: ${(props) => (props.isDisabled ? '80%' : '92%')};
   }
 
   &::before {
@@ -53,7 +54,7 @@ const Base = styled.button<ButtonType>`
     text-decoration: none;
     flex-wrap: nowrap;
   }
-`
+`;
 
 // Icing falling & filling button
 const IcingOn = styled(Base)`
@@ -68,7 +69,7 @@ const IcingOn = styled(Base)`
     border-radius: 40%;
       animation: ${spinDownOn} 6s ease-out forwards;
     }
-  }`
+  }`;
 
 // Icing falling off the button
 const IcingOff = styled(Base)`
@@ -83,45 +84,119 @@ const IcingOff = styled(Base)`
     border-radius: 40%;
       animation: ${spinDownOff} 6s ease-out forwards;
     }
-  }`
+  }`;
 
 interface ButtonType {
-  btnName: string
-  isDisabled?: boolean
-  isLoading?: boolean
-  onClick?: () => void
+  btnName: string;
+  isDisabled?: boolean;
+  isLoading?: boolean;
+  onClick?: () => void;
 }
 
-const IcingOnButton: React.FC<ButtonType> = ({ btnName, isLoading, isDisabled, onClick }) => {
+// Icing animation starts off button and falls on.
+const IcingOnButton: React.FC<ButtonType> = ({
+  btnName,
+  isLoading,
+  isDisabled,
+  onClick,
+}) => {
   return (
     <>
-      <IcingOn btnName={btnName} isLoading={isLoading} isDisabled={isDisabled} onClick={onClick}>
+      <IcingOn
+        btnName={btnName}
+        isLoading={isLoading}
+        isDisabled={isDisabled}
+        onClick={isDisabled || isLoading ? undefined : onClick}
+      >
         {btnName}
       </IcingOn>
     </>
-  )
-}
+  );
+};
 
-const IcingOffButton: React.FC<ButtonType> = ({ btnName, isLoading, isDisabled, onClick }) => {
+// Icing animation starts on button & falls off.
+const IcingOffButton: React.FC<ButtonType> = ({
+  btnName,
+  isLoading,
+  isDisabled,
+  onClick,
+}) => {
   return (
     <>
-      <IcingOff btnName={btnName} isLoading={isLoading} isDisabled={isDisabled} onClick={onClick}>
+      <IcingOff
+        btnName={btnName}
+        isLoading={isLoading}
+        isDisabled={isDisabled}
+        onClick={isDisabled || isLoading ? undefined : onClick}
+      >
         {btnName}
       </IcingOff>
     </>
-  )
-}
+  );
+};
 
-const IcingButton: React.FC<ButtonType> = ({ btnName, isLoading, isDisabled, onClick }) => {
+// Determines which icing animation to render based off loading condition.
+const RenderIcingButton: React.FC<ButtonType> = ({
+  btnName,
+  isLoading,
+  isDisabled,
+  onClick,
+}) => {
   return (
     <>
       {!isLoading ? (
-        <IcingOffButton btnName={btnName} isLoading={isLoading} isDisabled={isDisabled} onClick={onClick} />
+        <IcingOffButton
+          btnName={btnName}
+          isLoading={isLoading}
+          isDisabled={isDisabled}
+          onClick={isDisabled || isLoading ? undefined : onClick}
+        />
       ) : (
-        <IcingOnButton btnName={btnName} isLoading={isLoading} isDisabled={isDisabled} onClick={onClick} />
+        <IcingOnButton
+          btnName={btnName}
+          isLoading={isLoading}
+          isDisabled={isDisabled}
+          onClick={isDisabled || isLoading ? undefined : onClick}
+        />
       )}
     </>
-  )
-}
+  );
+};
 
-export default IcingButton
+// Handles initial button & what animated button to render.
+const IcingButton: React.FC<ButtonType> = ({
+  btnName,
+  isLoading,
+  isDisabled,
+  onClick,
+}) => {
+  const [initialInteraction, setInitialInteraction] = useState(false);
+
+  // Calls onClick manually & sets :after animations.
+  const setInitialInteractionHandler = () => {
+    {onClick != undefined ? onClick() : undefined} // only `onClick` when functions are attached.
+    setInitialInteraction(true);
+  };
+
+  // If first interaction, call handler to set animations & call `onClick` together.
+  return (
+    <>
+      {!initialInteraction ? (
+        <Base
+          btnName={btnName}
+          isDisabled={isDisabled}
+          onClick={setInitialInteractionHandler}
+        />
+      ) : (
+        <RenderIcingButton
+          btnName={btnName}
+          isLoading={isLoading}
+          isDisabled={isDisabled}
+          onClick={onClick}
+        />
+      )}
+    </>
+  );
+};
+
+export default IcingButton;
