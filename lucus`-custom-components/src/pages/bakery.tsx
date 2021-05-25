@@ -1,5 +1,5 @@
 const Bakery = () => {
-    return <h1>The Farms Page</h1>
+    return <h1>The Bakery Page</h1>
 }
 
 export default Bakery;

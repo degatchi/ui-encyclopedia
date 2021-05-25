@@ -2,7 +2,7 @@ import { NavLink as Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Nav = styled.nav`
-  background: #000;
+  background: #303032;
   height: 80px;
   display: flex;
   justify-content: space-between;
@@ -79,26 +79,18 @@ const NavBtnLink = styled(Link)`
 
 const Navbar = () => {
   return (
-    <>
-      <Nav>
-        <NavLink to='/'>
-          <h1>EasyBake</h1>
-        </NavLink>
-        {/* <Bars /> */}
-        <NavMenu>
-          <NavLink to='/farms'>
-            Bakery
-          </NavLink>
-          <NavLink to='/farms'>
-            Refinery
-          </NavLink>
-          <NavLink to='/farms'>
-            Team
-          </NavLink>
-        </NavMenu>
-        <NavBtn></NavBtn>
-      </Nav>
-    </>
+    <Nav>
+      <NavLink to='/'>
+        <h1>EasyBake</h1>
+      </NavLink>
+      {/* <Bars /> */}
+      <NavMenu>
+        <NavLink to='/bakery'>Bakery</NavLink>
+        <NavLink to='/refinery'>Refinery</NavLink>
+        <NavLink to='/team'>Team</NavLink>
+      </NavMenu>
+      <NavBtn></NavBtn>
+    </Nav>
   );
 };
 

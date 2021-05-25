@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { IcingButton } from '../components/Buttons/IcingButton';
+import Page from './layout/Page'
+import IcingButton from '../components/IcingButton';
 import Modal from '../components/Modals/Modal';
 import { Card } from '../components/Card/index';
 
@@ -27,7 +28,7 @@ const Home = () => {
   };
 
   return (
-    <>
+    <Page>
       <button onClick={setTxStatusHandler}>COMPLETE TX</button>
       <button onClick={setShowModalHandler}>SHOW MODAL</button>
       <Modal
@@ -41,7 +42,7 @@ const Home = () => {
         onClick={pendingTx ? undefined : setTxStatusHandler}
       />
       <Card width='18rem' height='14rem' />
-    </>
+    </Page>
   );
 };
 
