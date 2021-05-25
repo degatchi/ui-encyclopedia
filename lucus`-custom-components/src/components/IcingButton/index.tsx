@@ -174,18 +174,18 @@ const IcingButton: React.FC<ButtonType> = ({
 
   // Calls onClick manually & sets :after animations.
   const setInitialInteractionHandler = () => {
-    {onClick != undefined ? onClick() : undefined} // only `onClick` when functions are attached.
+    onClick();
     setInitialInteraction(true);
   };
 
-  // If first interaction, call handler to set animations & call `onClick` together.
+  // If first interaction, call handler to set animations & call onClick together.
   return (
     <>
       {!initialInteraction ? (
         <Base
           btnName={btnName}
           isDisabled={isDisabled}
-          onClick={setInitialInteractionHandler}
+          onClick={isDisabled ? undefined : setInitialInteractionHandler}
         />
       ) : (
         <RenderIcingButton
