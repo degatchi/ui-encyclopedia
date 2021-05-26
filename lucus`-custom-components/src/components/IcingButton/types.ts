@@ -1,7 +1,8 @@
 export const scales = {
-  MD: "md",
-  SM: "sm",
-  XS: "xs",
+  LG: 'lg',
+  MD: 'md',
+  SM: 'sm',
+  XS: 'xs',
 } as const;
 
 export const themes = {

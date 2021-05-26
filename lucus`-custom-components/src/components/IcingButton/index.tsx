@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
-import { themeColors } from './theme'
+import { themeColors } from './styledTypes'
 
 // Animation for icing onto button
 const spinDownOn = keyframes`{
