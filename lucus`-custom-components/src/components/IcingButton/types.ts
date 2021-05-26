@@ -12,3 +12,11 @@ export const themes = {
 
 export type Scale = typeof scales[keyof typeof scales];
 export type Theme = typeof themes[keyof typeof themes];
+
+export interface ButtonType {
+  scale: Scale;
+  btnName: string;
+  isDisabled?: boolean;
+  isLoading?: boolean;
+  onClick?: () => void;
+}

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import Page from './layout/Page'
+import Page from './layout/Page';
 import IcingButton from '../components/IcingButton';
 import Modal from '../components/Modals/Modal';
 import { Card } from '../components/Card/index';
@@ -37,6 +37,7 @@ const Home = () => {
         onDismiss={setShowModalHandler}
       />
       <IcingButton
+        scale='md'
         btnName='DEPOSIT'
         isDisabled={pendingTx}
         onClick={pendingTx ? undefined : setTxStatusHandler}
