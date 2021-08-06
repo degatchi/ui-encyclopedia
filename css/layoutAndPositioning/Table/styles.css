@@ -1,0 +1,79 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Mukta, sans-serif;
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  color: #4f546c;
+  font-size: 0.9rem;
+  background-color: #f9fbff;
+}
+
+table {
+  /* Removes whites space between each row  */
+  border-collapse: collapse; 
+  box-shadow: 0 5px 10px #e1e5ee;
+  background-color: white;
+  text-align: left;
+  overflow: hidden;
+
+  thead {
+    box-shadow: 0 5px 10px #e1e5ee;
+  }
+
+  th {
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 0.7rem;
+    font-weight: 900;
+  }
+
+  td {
+    padding: 1rem 2rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: #2962ff;
+  }
+
+  .status {
+    border-radius: 0.2rem;
+    background-color: red;
+    padding: 0.2rem 1rem;
+    text-align: center;
+
+    &-pending {
+      background-color: #a68b00;
+      color: #a68b00;
+    }
+
+    &-paid {
+      background-color: #c8e6c9;
+      color: #388e3c;
+    }
+
+    &-unpaid {
+      background-color: #ffcdd2;
+      color: #c62828;
+    }
+  }
+
+  .amount {
+    text-align: right;
+  }
+
+  /* Color alternating rows */
+  tr:nth-child(even) {
+    background-color: #f4f6fb;
+  }
+}

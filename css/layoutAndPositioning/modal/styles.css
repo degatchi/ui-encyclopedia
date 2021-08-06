@@ -1,0 +1,110 @@
+* {
+    /* makes  working with widths and heights easier */
+    box-sizing: border-box;
+}
+
+body {
+    /* centers modal in middle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* container is in dead center */
+    height: 100vh;
+    /* no scroll bar in modal */
+    margin: 0;
+    background-color: #555;
+}
+
+.modal {
+    /* 80% of entire screen size */
+    height: 80vh; 
+    /* if modal is too large, it will take only 80%, otherwise the width length when enough space */
+    width: 900px;
+    max-width: 80%;
+    /* creates scrolls bars if content is too large */
+    background-color: white;
+    border-radius: 8px;
+    display: flex;
+    /* make center body take up extra space instead of entire modal */
+    flex-direction: column;
+}
+
+.header {
+    padding: 0 1rem;
+    border-bottom: 1px solid #777;
+    /* spaces title from border */
+    padding-bottom: .5rem;
+    display: flex;
+    /* makes close button on right side and title on left */
+    justify-content: space-between;
+
+}
+
+.title {
+    font-size: 1.5rem;
+    padding-top: 1rem;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    align-self: flex-start;
+    padding-top: .5rem;
+}
+
+.body {
+    /* always grows to be the full size of the modal (including white space) */
+    flex-grow: 1;
+    /* scrollbar is only inside of text section */
+    overflow: auto;
+    padding: 1rem;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: .5rem;
+    border-top: 1px solid #777;
+}
+
+/* all the btns inside of `.footer` */
+.footer .btn {
+    margin-right: .5rem;
+}
+
+.footer .btn:last-child {
+    margin-right: initial;
+}
+
+.btn {
+    padding: .5em 1em;
+    font-size: inherit;
+    border-radius: .3em;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.btn.btn-primary {
+    background-color: #1CA;
+}
+
+.btn.btn-primary:hover,
+.btn.btn-primary:focus {
+    background-color: #0A8;
+}
+
+.btn.btn-danger {
+    background-color: #C33;
+}
+
+.btn.btn-danger:hover,
+.btn.btn-danger:focus {
+    background-color: #A11;
+}
+

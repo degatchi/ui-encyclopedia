@@ -1,0 +1,41 @@
+* {
+    /* makes  working with widths and heights easier */
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.nav {
+    background-color: #333;
+    color: white;
+    /* text side by side instead of below */
+    display: flex;
+    /* pushs left and right with space in middle */
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 .5rem;
+}
+
+.link-list {
+    /* aligns links next to each other */
+    display: flex;
+    margin: 0;
+    /* removes dots */
+    list-style: none;
+}
+
+.link {
+    padding: .5rem;
+}
+
+.link:hover {
+    background-color: #777;
+}
+
+.link a {
+    color: inherit;
+    /* removes underlines */
+    text-decoration: none;
+}

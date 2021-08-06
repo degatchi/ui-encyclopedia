@@ -1,0 +1,54 @@
+input {
+    /* spacing all from eachother for display purposes */
+    margin: .25rem; 
+}
+
+.input {
+    border: 1px solid #AAA;
+    /* removes default blue outline */
+    outline: none;
+    /* inherits from default of page */
+    font-size: inherit;
+    /* use `em` to scale with font rather than be static */
+    padding: .5em;
+    border-radius: .2em;
+}
+
+/* When click in input, show these */
+.input:focus {
+    border-color: #00AAFF;
+    /* y axis, x axis, blur, spread, colour */
+    box-shadow: 0 0 5px 0 #00AAFF;
+}
+
+.input:disabled {
+    background-color: #EAEAEA;
+}
+
+/* inherits `.input` but overrides defined values */
+.input.input-success {
+    border-color: #27AE60;
+}
+
+/* inherits `.input:focus` but overrides defined values */
+.input.input-success:focus {
+    border-color: #0F0;
+    box-shadow: 0 0 5px 0 #0F0;
+}
+
+.input.input-error {
+    border-color: #EB5757;
+}
+
+.input.input-error:focus {
+    border-color: #F00;
+    box-shadow: 0 0 5px 0 #F00;
+}
+
+.input.input-large {
+    font-size: 1.25rem;
+}
+
+.input.input-small {
+    font-size: 0.75rem;
+}
